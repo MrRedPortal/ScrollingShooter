@@ -3,26 +3,40 @@ package com.becroft.scrollingshooter;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.PointF;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
-public class GameEngine extends SurfaceView implements Runnable, GameStarter {
+import java.util.ArrayList;
+
+public class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngineBroadcaster{
 
     private Thread thread = null;
     private long FPS;
+    private ArrayList<InputObserver> inputObservers = new ArrayList();
+
+    UIController uiController;
 
     private GameState gameState;
     private SoundEngine soundEngine;
     HUD hud;
     Renderer renderer;
+    ParticleSystem particleSystem;
+    PhysicsEngine physicsEngine;
     public GameEngine(Context context, Point size){
         super(context);
 
+        uiController = new UIController(this);
         gameState = new GameState(this, context);
         soundEngine = new SoundEngine(context);
         hud = new HUD(size);
         renderer = new Renderer(this);
+        physicsEngine = new PhysicsEngine();
+
+        particleSystem = new ParticleSystem();
+        // Set how many particles
+        particleSystem.init(1000);
     }
 
     @Override
@@ -30,12 +44,19 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter {
         while(gameState.getThreadRunning()) {
             long frameStartTime = System.currentTimeMillis();
 
-            if (gameState.getPaused()) {
+            if (!gameState.getPaused()) {
                 // Update all game objects in a new way
+
+                // This will evolve as the program evolves
+                if(physicsEngine.update(FPS, particleSystem)){
+
+                    //Player hit
+                    deSpawnReSpawn();
+                }
             }
 
             // Draw all game objects here in a new way
-            renderer.draw(gameState,hud);
+            renderer.draw(gameState,hud,particleSystem);
 
             // Measure FPS
             long timeThisFrame = System.currentTimeMillis() - frameStartTime;
@@ -49,8 +70,12 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter {
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent){
         // Handle player input in new way
+        for (InputObserver o: inputObservers) {
+            o.handleInput(motionEvent, gameState, hud.getControls());
+        }
 
-
+        // This is temporary code to make explosion
+        particleSystem.emitParticles(new PointF(500,500));
 
         return true;
     }
@@ -77,5 +102,10 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter {
     @Override
     public void deSpawnReSpawn() {
         // Eventually this will despawn and then respawn all game objects
+    }
+
+    @Override
+    public void addObserver(InputObserver o) {
+        inputObservers.add(o);
     }
 }

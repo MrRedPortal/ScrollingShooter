@@ -18,7 +18,7 @@ public class GameActivity extends Activity {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         // Bug introduced here
-        // display.getSize(size);
+        display.getSize(size);
         // Forgot to set size to the display size.
         // So while things were being drawn, it was to nowhere
         gameEngine = new GameEngine(this, size);

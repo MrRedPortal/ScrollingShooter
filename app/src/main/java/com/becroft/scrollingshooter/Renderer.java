@@ -16,7 +16,7 @@ public class Renderer {
         paint = new Paint();
     }
 
-    void draw(GameState gs, HUD hud){
+    void draw(GameState gs, HUD hud, ParticleSystem particleSystem){
         if(surfaceHolder.getSurface().isValid()){
             canvas = surfaceHolder.lockCanvas();
             canvas.drawColor(Color.argb(255,0,0,0));
@@ -30,6 +30,10 @@ public class Renderer {
             }
 
             // Draw particle system explosion here
+            if(particleSystem.isRunning){
+                particleSystem.draw(canvas,paint);
+            }
+
 
             // Draw Hud over everything else
             hud.draw(canvas, paint, gs);
