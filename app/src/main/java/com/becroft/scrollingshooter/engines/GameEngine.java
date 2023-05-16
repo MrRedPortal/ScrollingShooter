@@ -10,10 +10,11 @@ import android.view.SurfaceView;
 
 import com.becroft.scrollingshooter.HUD;
 import com.becroft.scrollingshooter.UIController;
+import com.becroft.scrollingshooter.components.PlayerLaserSpawner;
 
 import java.util.ArrayList;
 
-public class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngineBroadcaster{
+public class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngineBroadcaster, PlayerLaserSpawner{
 
     private Thread thread = null;
     private long FPS;
@@ -110,5 +111,10 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
     @Override
     public void addObserver(InputObserver o) {
         inputObservers.add(o);
+    }
+
+    @Override
+    public boolean spawnPlayerLaser(Transform transform) {
+        return false;
     }
 }

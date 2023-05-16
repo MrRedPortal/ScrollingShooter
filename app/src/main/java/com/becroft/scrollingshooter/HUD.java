@@ -17,11 +17,11 @@ public class HUD {
 
     private ArrayList<Rect> controls;
 
-    static int UP = 0;
-    static int DOWN = 1;
-    static int FLIP = 2;
-    static int SHOOT = 3;
-    static int PAUSE = 4;
+    public static int UP = 0;
+    public static int DOWN = 1;
+    public static int FLIP = 2;
+    public static int SHOOT = 3;
+    public static int PAUSE = 4;
 
     public HUD(Point size){
         screenHeight = size.y;

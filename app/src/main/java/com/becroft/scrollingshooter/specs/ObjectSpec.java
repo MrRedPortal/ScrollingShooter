@@ -2,7 +2,7 @@ package com.becroft.scrollingshooter.specs;
 
 import android.graphics.PointF;
 
-abstract class ObjectSpec {
+public abstract class ObjectSpec {
 
     private String tag;
     private String bitmapName;
