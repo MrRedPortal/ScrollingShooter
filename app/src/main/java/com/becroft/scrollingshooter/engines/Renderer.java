@@ -1,10 +1,12 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.engines;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.becroft.scrollingshooter.HUD;
 
 public class Renderer {
     private Canvas canvas;

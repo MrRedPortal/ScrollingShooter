@@ -1,10 +1,6 @@
 
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 o
 ?app/src/main/java/com/becroft/scrollingshooter/SoundEngine.java,d\8\d8e31cfa12580fd08fb64e7e8ae3ccb66503c795
-g
-7app/src/main/java/com/becroft/scrollingshooter/HUD.java,3\9\397db4eb8e0df456d12d38fea914652e6f6db4fb
 m
 =app/src/main/java/com/becroft/scrollingshooter/GameState.java,b\e\be263286b64d4be5fed12fbd0508c196333f83f1
 o
@@ -13,3 +9,15 @@ m
 =app/src/main/java/com/becroft/scrollingshooter/projectPlan.md,d\f\df36cc0e44bec8763cad845240b36b8564a8a314
 s
 Capp/src/test/java/com/becroft/scrollingshooter/ExampleUnitTest.java,3\9\3998e8e374e4cf55a89ba05fc5720aca254612ea
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+r
+Bapp/src/main/java/com/becroft/scrollingshooter/ParticleSystem.java,0\0\00127b44a37cda32a7d7a188de7d4a1c61244358
+p
+@app/src/main/java/com/becroft/scrollingshooter/GameActivity.java,2\6\26e46791fb695d58e8f675b33bb55bedf51ee2c2
+q
+Aapp/src/main/java/com/becroft/scrollingshooter/InputObserver.java,3\6\3699c6de000c44b0dbb6c7e2820fa43d41ca7aca
+y
+Iapp/src/main/java/com/becroft/scrollingshooter/GameEngineBroadcaster.java,2\4\246e2b1cc1a0bbef806cda725e2bba3ffdb81ed9
+l
+<app/src/main/java/com/becroft/scrollingshooter/Renderer.java,6\8\68cbc88add6fc28a314ea1cad06d27db96cf9b74

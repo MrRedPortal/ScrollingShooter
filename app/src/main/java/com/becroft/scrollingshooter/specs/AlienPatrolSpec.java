@@ -1,21 +1,21 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.specs;
 
 import android.graphics.PointF;
 
-class AlienChaseSpec extends ObjectSpec {
-    // This is all the unique specifications for an alien that chases a player
+import com.becroft.scrollingshooter.specs.ObjectSpec;
 
+public class AlienPatrolSpec extends ObjectSpec {
     private static final String tag = "Alien";
-    private static final String bitmapName = "alien_ship1";
-    private static final float speed = 4f;
+    private static final String bitmapName = "alien_ship2";
+    private static final float speed = 5f;
     private static final PointF relativeScale = new PointF(15f,15f);
 
     private static final String[] components = new String[] {
             "StdGraphicsComponent",
-            "AlienChaseMovementComponent",
+            "AlienPatrolMovementComponent",
             "AlienHorizontalSpawnComponent"};
 
-    AlienChaseSpec(){
+    AlienPatrolSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }

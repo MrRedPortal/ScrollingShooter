@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.becroft.scrollingshooter.engines.GameState;
+
 import java.util.ArrayList;
 
 public class HUD {
@@ -21,7 +23,7 @@ public class HUD {
     static int SHOOT = 3;
     static int PAUSE = 4;
 
-    HUD(Point size){
+    public HUD(Point size){
         screenHeight = size.y;
         screenWidth = size.x;
         textFormatting = size.x / 50;
@@ -56,7 +58,7 @@ public class HUD {
         controls.add(SHOOT,shoot);
         controls.add(PAUSE,pause);
     }
-    void draw(Canvas c, Paint p, GameState gs){
+    public void draw(Canvas c, Paint p, GameState gs){
         // Draw the hud
         p.setColor(Color.argb(255,255,255,255));
         p.setTextSize(textFormatting);
@@ -86,7 +88,7 @@ public class HUD {
         p.setColor(Color.argb(255,255,255,255));
     }
 
-    ArrayList<Rect> getControls(){
+    public ArrayList<Rect> getControls(){
         return controls;
     }
 }

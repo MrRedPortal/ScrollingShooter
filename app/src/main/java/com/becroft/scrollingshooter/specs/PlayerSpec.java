@@ -1,8 +1,10 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.specs;
 
 import android.graphics.PointF;
 
-public class PlayerSpec extends ObjectSpec{
+import com.becroft.scrollingshooter.specs.ObjectSpec;
+
+public class PlayerSpec extends ObjectSpec {
     private static final String tag = "Player";
     private static final String bitmapName = "player_ship";
     private static final float speed = 1f;

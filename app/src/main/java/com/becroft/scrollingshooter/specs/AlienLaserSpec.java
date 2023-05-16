@@ -1,8 +1,10 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.specs;
 
 import android.graphics.PointF;
 
-public class AlienLaserSpec extends ObjectSpec{
+import com.becroft.scrollingshooter.specs.ObjectSpec;
+
+public class AlienLaserSpec extends ObjectSpec {
     // THis is all the unique specifications for an alien laser
     private static final String tag = "Alien Laser";
     private static final String bitmapName = "alien_laser";

@@ -1,4 +1,4 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.engines;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -47,7 +47,7 @@ public class GameState {
         }
     }
 
-    void startNewGame(){
+    public void startNewGame(){
         score = 0;
         numShips = 3;
         // We dont want to draw objects while deSpawnReSpawn is clearing and respawning
@@ -70,7 +70,7 @@ public class GameState {
     }
 
     //Getters and setters
-    int getNumShips(){
+    public int getNumShips(){
         return numShips;
     }
 
@@ -78,19 +78,19 @@ public class GameState {
         score++;
     }
 
-    int getScore(){
+    public int getScore(){
         return score;
     }
 
-    int getHighScore(){
+    public int getHighScore(){
         return highScore;
     }
 
-    void pause(){
+    public void pause(){
         paused = true;
     }
 
-    void resume(){
+    public void resume(){
         gameOver = false;
         paused = false;
     }
@@ -121,11 +121,11 @@ public class GameState {
         return drawing;
     }
 
-    boolean getPaused(){
+    public boolean getPaused(){
         return paused;
     }
 
-    boolean getGameOver(){
+    public boolean getGameOver(){
         return gameOver;
     }
 }

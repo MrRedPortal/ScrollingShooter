@@ -1,8 +1,10 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.specs;
 
 import android.graphics.PointF;
 
-public class PlayerLaserSpec extends ObjectSpec{
+import com.becroft.scrollingshooter.specs.ObjectSpec;
+
+public class PlayerLaserSpec extends ObjectSpec {
     private static final String tag = "Player Laser";
     private static final String bitmapName = "player_laser";
     private static final float speed = .65f;

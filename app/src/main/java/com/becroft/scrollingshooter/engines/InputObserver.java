@@ -1,4 +1,4 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.engines;
 
 import android.graphics.Rect;
 import android.view.MotionEvent;

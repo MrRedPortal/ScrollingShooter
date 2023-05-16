@@ -8,7 +8,7 @@ public class Particle {
     PointF velocity;
     PointF position;
 
-    Particle(PointF direction){
+    public Particle(PointF direction){
         velocity = new PointF();
         position = new PointF();
 
@@ -17,18 +17,18 @@ public class Particle {
         velocity.y = direction.y;
     }
 
-    void update(){
+    public void update(){
         // Move the particle
         position.x += velocity.x;
         position.y += velocity.y;
     }
 
-    void setPosition(PointF pos){
+    public void setPosition(PointF pos){
         position.x = pos.x;
         position.y = pos.y;
     }
 
-    PointF getPosition(){
+    public PointF getPosition(){
         return position;
     }
 

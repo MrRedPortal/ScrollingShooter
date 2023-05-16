@@ -1,4 +1,4 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.engines;
 
 public interface GameStarter {
     // This allows the State class to spawn and despawn objects via the game engine

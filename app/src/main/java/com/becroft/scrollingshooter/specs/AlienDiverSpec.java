@@ -1,8 +1,10 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.specs;
 
 import android.graphics.PointF;
 
-public class AlienDiverSpec extends ObjectSpec{
+import com.becroft.scrollingshooter.specs.ObjectSpec;
+
+public class AlienDiverSpec extends ObjectSpec {
     // This is all the unique specifications for an alien that dives
 
     private static final String tag = "Alien";

@@ -1,4 +1,4 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.engines;
 
 import android.app.Activity;
 import android.graphics.Point;

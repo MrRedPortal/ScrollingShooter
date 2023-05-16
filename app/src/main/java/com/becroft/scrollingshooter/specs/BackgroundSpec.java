@@ -1,8 +1,10 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.specs;
 
 import android.graphics.PointF;
 
-public class BackgroundSpec extends ObjectSpec{
+import com.becroft.scrollingshooter.specs.ObjectSpec;
+
+public class BackgroundSpec extends ObjectSpec {
     // This is all the unique specifications required for the background
 
     private static final String tag = "Background";

@@ -1,4 +1,4 @@
-package com.becroft.scrollingshooter;
+package com.becroft.scrollingshooter.engines;
 
 
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.graphics.PointF;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
+
+import com.becroft.scrollingshooter.HUD;
+import com.becroft.scrollingshooter.UIController;
 
 import java.util.ArrayList;
 
