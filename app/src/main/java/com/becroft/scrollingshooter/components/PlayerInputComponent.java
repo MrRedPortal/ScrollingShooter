@@ -17,7 +17,7 @@ public class PlayerInputComponent implements InputComponent, InputObserver {
     private Transform transform;
     private PlayerLaserSpawner PLS;
 
-    PlayerInputComponent(GameEngine gameEngine){
+    public PlayerInputComponent(GameEngine gameEngine){
         gameEngine.addObserver(this);
         PLS = gameEngine;
     }

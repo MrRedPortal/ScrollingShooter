@@ -23,14 +23,14 @@ public class Transform {
     private float objectWidth;
     private static PointF screenSize;
 
-    Transform(float speed, float objectWidth, float objectHeight, PointF startingLocation, PointF screenSize){
+    public Transform(float speed, float objectWidth, float objectHeight, PointF startingLocation, PointF screenSize){
 
         collider = new RectF();
         this.speed = speed;
         this.objectHeight = objectHeight;
         this.objectWidth = objectWidth;
         location = startingLocation;
-        screenSize = screenSize;
+        this.screenSize = screenSize;
 
     }
 

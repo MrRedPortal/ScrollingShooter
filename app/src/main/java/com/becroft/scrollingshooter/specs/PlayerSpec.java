@@ -16,7 +16,7 @@ public class PlayerSpec extends ObjectSpec {
             "PlayerMovementComponent",
             "PlayerSpawnComponent"};
 
-    PlayerSpec(){
+    public PlayerSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }

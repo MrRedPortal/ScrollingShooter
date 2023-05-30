@@ -6,7 +6,11 @@ import android.graphics.Paint;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.becroft.scrollingshooter.GameObject;
 import com.becroft.scrollingshooter.HUD;
+import com.becroft.scrollingshooter.Level;
+
+import java.util.ArrayList;
 
 public class Renderer {
     private Canvas canvas;
@@ -18,17 +22,23 @@ public class Renderer {
         paint = new Paint();
     }
 
-    void draw(GameState gs, HUD hud, ParticleSystem particleSystem){
+    void draw(ArrayList<GameObject> objects, GameState gs, HUD hud, ParticleSystem particleSystem){
         if(surfaceHolder.getSurface().isValid()){
             canvas = surfaceHolder.lockCanvas();
             canvas.drawColor(Color.argb(255,0,0,0));
 
             if(gs.getDrawing()){
                 // Draw all game objects here
+                for(GameObject object: objects){
+                    if(object.checkActive()){
+                        object.draw(canvas,paint);
+                    }
+                }
             }
 
             if(gs.getGameOver()){
                 // draw background graphic
+                objects.get(Level.BACKGROUND_INDEX).draw(canvas,paint);
             }
 
             // Draw particle system explosion here

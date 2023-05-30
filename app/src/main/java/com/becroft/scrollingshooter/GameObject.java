@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 
 import com.becroft.scrollingshooter.components.GraphicsComponent;
+import com.becroft.scrollingshooter.components.InputComponent;
 import com.becroft.scrollingshooter.components.MovementComponent;
 import com.becroft.scrollingshooter.components.SpawnComponent;
 import com.becroft.scrollingshooter.components.Transform;
@@ -35,6 +36,10 @@ public class GameObject {
         movementComponent = movement;
     }
 
+    void setInput(InputComponent s){
+        s.setTransform(transform);
+    }
+
     void setTag(String newTag){
         tag=newTag;
     }
@@ -43,18 +48,18 @@ public class GameObject {
         transform = t;
     }
 
-    void draw(Canvas canvas, Paint paint){
+    public void draw(Canvas canvas, Paint paint){
         graphicsComponent.draw(canvas,paint,transform);
     }
 
-    void update(long fps, Transform playerTransform){
+    public void update(long fps, Transform playerTransform){
         if(!(movementComponent.move(fps,transform, playerTransform))){
             // Returned false
             isActive =false;
         }
     }
 
-    boolean spawn(Transform playerTransform){
+    public boolean spawn(Transform playerTransform){
         // Only spawn component if not already active
         if(!isActive){
             spawnComponent.spawn(playerTransform,transform);
@@ -64,7 +69,7 @@ public class GameObject {
         return false;
     }
 
-    boolean checkActive(){
+    public boolean checkActive(){
         return isActive;
     }
 
@@ -72,11 +77,11 @@ public class GameObject {
         return tag;
     }
 
-    void setInactive(){
+    public void setInactive(){
         isActive = false;
     }
 
-    Transform getTransform(){
+    public Transform getTransform(){
         return transform;
     }
 

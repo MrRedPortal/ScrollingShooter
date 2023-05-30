@@ -17,7 +17,7 @@ public class BackgroundSpec extends ObjectSpec {
             "BackgroundMovementComponent",
             "BackgroundSpawnComponent"};
 
-    BackgroundSpec(){
+    public BackgroundSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }

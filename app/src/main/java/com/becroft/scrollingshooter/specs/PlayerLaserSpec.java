@@ -15,7 +15,7 @@ public class PlayerLaserSpec extends ObjectSpec {
             "LaserMovementComponent",
             "LaserSpawnComponent"};
 
-    PlayerLaserSpec(){
+    public PlayerLaserSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }

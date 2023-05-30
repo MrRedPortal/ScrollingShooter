@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 
+import com.becroft.scrollingshooter.GameObject;
 import com.becroft.scrollingshooter.HUD;
+import com.becroft.scrollingshooter.Level;
 import com.becroft.scrollingshooter.UIController;
 import com.becroft.scrollingshooter.components.PlayerLaserSpawner;
+import com.becroft.scrollingshooter.components.Transform;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,7 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
     Renderer renderer;
     ParticleSystem particleSystem;
     PhysicsEngine physicsEngine;
+    Level level;
     public GameEngine(Context context, Point size){
         super(context);
 
@@ -41,18 +45,21 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
         particleSystem = new ParticleSystem();
         // Set how many particles
         particleSystem.init(1000);
+
+        level = new Level(context, new PointF(size.x,size.y), this);
     }
 
     @Override
     public void run() {
         while(gameState.getThreadRunning()) {
             long frameStartTime = System.currentTimeMillis();
+            ArrayList<GameObject> objects = level.getGameObjects();
 
             if (!gameState.getPaused()) {
                 // Update all game objects in a new way
 
                 // This will evolve as the program evolves
-                if(physicsEngine.update(FPS, particleSystem)){
+                if(physicsEngine.update(FPS,objects, gameState,soundEngine,particleSystem)){
 
                     //Player hit
                     deSpawnReSpawn();
@@ -60,7 +67,7 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
             }
 
             // Draw all game objects here in a new way
-            renderer.draw(gameState,hud,particleSystem);
+            renderer.draw(objects,gameState,hud,particleSystem);
 
             // Measure FPS
             long timeThisFrame = System.currentTimeMillis() - frameStartTime;
@@ -77,9 +84,6 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
         for (InputObserver o: inputObservers) {
             o.handleInput(motionEvent, gameState, hud.getControls());
         }
-
-        // This is temporary code to make explosion
-        particleSystem.emitParticles(new PointF(500,500));
 
         return true;
     }
@@ -105,7 +109,14 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
 
     @Override
     public void deSpawnReSpawn() {
-        // Eventually this will despawn and then respawn all game objects
+        ArrayList<GameObject> objects = level.getGameObjects();
+
+        for(GameObject o: objects){
+            o.setInactive();
+        }
+        objects.get(Level.PLAYER_INDEX).spawn(objects.get(Level.PLAYER_INDEX).getTransform());
+
+        objects.get(Level.BACKGROUND_INDEX).spawn(objects.get(Level.PLAYER_INDEX).getTransform());
     }
 
     @Override
@@ -115,6 +126,16 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
 
     @Override
     public boolean spawnPlayerLaser(Transform transform) {
-        return false;
+        ArrayList<GameObject> objects = level.getGameObjects();
+
+        if(objects.get(Level.nextPlayerLaser).spawn(transform)){
+            Level.nextPlayerLaser++;
+            soundEngine.playShoot();
+            if(Level.nextPlayerLaser == Level.LAST_PLAYER_LASER + 1){
+                // Used last laser
+                Level.nextPlayerLaser = Level.FIRST_PLAYER_LASER;
+            }
+        }
+        return true;
     }
 }

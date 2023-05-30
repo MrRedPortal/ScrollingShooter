@@ -11,7 +11,7 @@ import com.becroft.scrollingshooter.specs.ObjectSpec;
 
 public interface GraphicsComponent {
 
-    void initialise(Context c, ObjectSpec s, PointF screenSize);
+    void initialise(Context c, ObjectSpec s, PointF objectSize);
 
     void draw(Canvas canvas, Paint paint, Transform t);
 
