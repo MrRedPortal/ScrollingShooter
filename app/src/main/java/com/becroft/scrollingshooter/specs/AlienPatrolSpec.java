@@ -15,7 +15,7 @@ public class AlienPatrolSpec extends ObjectSpec {
             "AlienPatrolMovementComponent",
             "AlienHorizontalSpawnComponent"};
 
-    AlienPatrolSpec(){
+    public AlienPatrolSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }

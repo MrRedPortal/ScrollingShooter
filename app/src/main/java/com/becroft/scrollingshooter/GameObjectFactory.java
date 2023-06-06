@@ -7,6 +7,8 @@ import com.becroft.scrollingshooter.components.*;
 import com.becroft.scrollingshooter.engines.GameEngine;
 import com.becroft.scrollingshooter.specs.ObjectSpec;
 
+import java.util.concurrent.CopyOnWriteArraySet;
+
 public class GameObjectFactory {
 
     private Context context;
@@ -67,6 +69,21 @@ public class GameObjectFactory {
                     break;
                 case "BackgroundSpawnComponent":
                     object.setSpawner(new BackgroundSpawnComponent());
+                    break;
+                case "AlienChaseMovementComponent":
+                    object.setMovement(new AlienChaseMovementComponent(gameEngineReference));
+                    break;
+                case "AlienPatrolMovementComponent":
+                    object.setMovement(new AlienPatrolMovementComponent(gameEngineReference));
+                    break;
+                case "AlienDiverMovementComponent":
+                    object.setMovement(new AlienDiverMovementComponent());
+                    break;
+                case "AlienHorizontalSpawnComponent":
+                    object.setSpawner(new AlienHorizontalSpawnComponent());
+                    break;
+                case "AlienVerticalSpawnComponent":
+                    object.setSpawner(new AlienVerticalSpawnComponent());
                     break;
 
                 default:

@@ -50,8 +50,18 @@ public class Level {
         nextPlayerLaser = FIRST_PLAYER_LASER;
 
         // Create some aliens
+        objects.add(FIRST_ALIEN, factory.create(new AlienChaseSpec()));
+        objects.add(SECOND_ALIEN, factory.create(new AlienPatrolSpec()));
+        objects.add(THIRD_ALIEN, factory.create(new AlienPatrolSpec()));
+        objects.add(FOURTH_ALIEN, factory.create(new AlienChaseSpec()));
+        objects.add(FIFTH_ALIEN, factory.create(new AlienDiverSpec()));
+        objects.add(SIXTH_ALIEN, factory.create(new AlienDiverSpec()));
 
         // Create some alien lasers
+        for(int i = FIRST_ALIEN_LASER; i != LAST_ALIEN_LASER +1; i++){
+            objects.add(i,factory.create(new AlienLaserSpec()));
+        }
+        nextAlienLaser = FIRST_ALIEN_LASER;
 
         return objects;
     }

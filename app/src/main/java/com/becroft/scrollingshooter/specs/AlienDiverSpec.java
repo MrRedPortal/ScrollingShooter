@@ -17,7 +17,7 @@ public class AlienDiverSpec extends ObjectSpec {
             "AlienDiverMovementComponent",
             "AlienVerticalSpawnComponent"};
 
-    AlienDiverSpec(){
+    public AlienDiverSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }

@@ -4,7 +4,7 @@ import android.graphics.PointF;
 
 import com.becroft.scrollingshooter.specs.ObjectSpec;
 
-class AlienChaseSpec extends ObjectSpec {
+public class AlienChaseSpec extends ObjectSpec {
     // This is all the unique specifications for an alien that chases a player
 
     private static final String tag = "Alien";
@@ -17,7 +17,7 @@ class AlienChaseSpec extends ObjectSpec {
             "AlienChaseMovementComponent",
             "AlienHorizontalSpawnComponent"};
 
-    AlienChaseSpec(){
+    public AlienChaseSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }

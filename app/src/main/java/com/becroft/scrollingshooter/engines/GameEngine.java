@@ -12,12 +12,13 @@ import com.becroft.scrollingshooter.GameObject;
 import com.becroft.scrollingshooter.HUD;
 import com.becroft.scrollingshooter.Level;
 import com.becroft.scrollingshooter.UIController;
+import com.becroft.scrollingshooter.components.AlienLaserSpawner;
 import com.becroft.scrollingshooter.components.PlayerLaserSpawner;
 import com.becroft.scrollingshooter.components.Transform;
 
 import java.util.ArrayList;
 
-public class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngineBroadcaster, PlayerLaserSpawner{
+public class GameEngine extends SurfaceView implements Runnable, GameStarter, GameEngineBroadcaster, PlayerLaserSpawner, AlienLaserSpawner {
 
     private Thread thread = null;
     private long FPS;
@@ -117,6 +118,10 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
         objects.get(Level.PLAYER_INDEX).spawn(objects.get(Level.PLAYER_INDEX).getTransform());
 
         objects.get(Level.BACKGROUND_INDEX).spawn(objects.get(Level.PLAYER_INDEX).getTransform());
+
+        for(int i = Level.FIRST_ALIEN; i != Level.LAST_ALIEN + 1; i++){
+            objects.get(i).spawn(objects.get(Level.PLAYER_INDEX).getTransform());
+        }
     }
 
     @Override
@@ -137,5 +142,22 @@ public class GameEngine extends SurfaceView implements Runnable, GameStarter, Ga
             }
         }
         return true;
+    }
+
+    @Override
+    public void spawnAlienLaser(Transform transform) {
+        ArrayList<GameObject> objects = level.getGameObjects();
+
+        // Shoots laser if available
+        // Pass transform of the ship that requested laser to be fired
+
+        if(objects.get(Level.nextAlienLaser).spawn(transform)){
+            Level.nextAlienLaser++;
+            soundEngine.playShoot();
+            if(Level.nextAlienLaser == Level.LAST_ALIEN_LASER +1){
+                // Last laser used
+                Level.nextAlienLaser = Level.FIRST_ALIEN_LASER;
+            }
+        }
     }
 }

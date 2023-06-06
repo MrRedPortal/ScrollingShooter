@@ -16,7 +16,7 @@ public class AlienLaserSpec extends ObjectSpec {
             "LaserMovementComponent",
             "LaserSpawnComponent"};
 
-    AlienLaserSpec(){
+    public AlienLaserSpec(){
         super(tag,bitmapName,speed,relativeScale,components);
     }
 }
